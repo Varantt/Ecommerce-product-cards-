@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const AddToCartButton = ({ text, addProduct, product, disabled }) => {
   return (
     <a
-      class="btn btn-outline-dark m-2"
+      class={`btn btn-outline-dark m-2 ${disabled ? 'disabled' : ''}`}
       href="#"
       onClick={() => {
         toast.success("Added to cart");
@@ -13,7 +13,7 @@ const AddToCartButton = ({ text, addProduct, product, disabled }) => {
     >
       <i class="fa-solid fa-cart-plus mr-1"></i>
       &nbsp;
-      {text}
+      {disabled ? <span class="disabled">{"Out Of Stock"}</span> : text}
     </a>
   );
 };

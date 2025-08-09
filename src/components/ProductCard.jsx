@@ -9,6 +9,7 @@ const Product = ({
   image,
   description,
   price,
+  rating,
   addProduct,
   product,
 }) => {
@@ -16,6 +17,9 @@ const Product = ({
     color: "",
     size: "",
   });
+
+  // hypothetical availability check
+  const [isAvailable, setIsAvailable] = useState(rating.rate > 3  && rating.count > 250 );
 
   const handleVariantSelection = (variantType, value) => {
     setSelectedVariants((prev) => ({
@@ -86,6 +90,7 @@ const Product = ({
               text={"Add To Cart"}
               addProduct={addProduct}
               product={product}
+              disabled = {!isAvailable}
             />
           </div>
         </div>
